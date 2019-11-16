@@ -122,8 +122,8 @@ class seasons:
             data = urllib2.urlopen(url, timeout=30).read()
 
             zip = zipfile.ZipFile(StringIO.StringIO(data))
-            result = if os.path.exists('%s.zip.xml' % 'en') zip.read('%s.zip.xml' % 'en') else zip.read('%s.xml' % 'en')
-            artwork = if os.path.exists('banners.zip.xml') zip.read('banners.zip.xml') else zip.read('banners.xml')
+            result = zip.read('%s.zip.xml' % 'en') if os.path.exists('%s.zip.xml' % 'en') else zip.read('%s.xml' % 'en')
+            artwork = zip.read('banners.zip.xml') if os.path.exists('banners.zip.xml') else zip.read('banners.xml')
             zip.close()
 
             dupe = client.parseDOM(result, 'SeriesName')[0]
@@ -136,8 +136,8 @@ class seasons:
                 data = urllib2.urlopen(url, timeout=30).read()
 
                 zip = zipfile.ZipFile(StringIO.StringIO(data))
-                result = if os.path.exists('%s.zip.xml' % 'en') zip.read('%s.zip.xml' % 'en') else zip.read('%s.xml' % 'en')
-                artwork = if os.path.exists('banners.zip.xml') zip.read('banners.zip.xml') else zip.read('banners.xml')
+                result = zip.read('%s.zip.xml' % 'en') if os.path.exists('%s.zip.xml' % 'en') else zip.read('%s.xml' % 'en')
+                artwork = zip.read('banners.zip.xml') if os.path.exists('banners.zip.xml') else zip.read('banners.xml')
                 zip.close()
 
             if not lang == 'en':
@@ -145,7 +145,7 @@ class seasons:
                 data = urllib2.urlopen(url, timeout=30).read()
 
                 zip = zipfile.ZipFile(StringIO.StringIO(data))
-                result2 = if os.path.exists('%s.zip.xml' % lang) zip.read('%s.zip.xml' % lang) else zip.read('%s.xml' % lang)
+                result2 = zip.read('%s.zip.xml' % lang) if os.path.exists('%s.zip.xml' % lang) else zip.read('%s.xml' % lang)
                 zip.close()
             else:
                 result2 = result
@@ -867,8 +867,8 @@ class episodes:
                 data = urllib2.urlopen(url, timeout=10).read()
 
                 zip = zipfile.ZipFile(StringIO.StringIO(data))
-                result = if os.path.exists('%s.zip.xml' % lang) zip.read('%s.zip.xml' % lang) else zip.read('%s.xml' % lang)
-                artwork = if os.path.exists('banners.zip.xml') zip.read('banners.zip.xml') else zip.read('banners.xml')
+                result = zip.read('%s.zip.xml' % lang) if os.path.exists('%s.zip.xml' % lang) else zip.read('%s.xml' % lang)
+                artwork = zip.read('banners.zip.xml') if os.path.exists('banners.zip.xml') else zip.read('banners.xml')
                 zip.close()
 
                 result = result.split('<Episode>')
@@ -1069,8 +1069,8 @@ class episodes:
                 data = urllib2.urlopen(url, timeout=10).read()
 
                 zip = zipfile.ZipFile(StringIO.StringIO(data))
-                result = if os.path.exists('%s.zip.xml' % lang) zip.read('%s.zip.xml' % lang) else zip.read('%s.xml' % lang)
-                artwork = if os.path.exists('banners.zip.xml') zip.read('banners.zip.xml') else zip.read('banners.xml')
+                result = zip.read('%s.zip.xml' % lang) if os.path.exists('%s.zip.xml' % lang) else zip.read('%s.xml' % lang)
+                artwork = zip.read('banners.zip.xml') if os.path.exists('banners.zip.xml') else zip.read('banners.xml')
                 zip.close()
 
                 result = result.split('<Episode>')
